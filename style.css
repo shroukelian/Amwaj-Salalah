@@ -1,0 +1,434 @@
+/* --- Amwaj Salalah Theme Colors (Waves) --- */
+:root {
+    --amwaj-primary: #00BFB3;
+    /* Main Teal/Cyan (الفيروزي/السماوي) */
+    --amwaj-secondary: #00A69A;
+    /* Secondary Teal (ظل أغمق) */
+    --amwaj-accent: #FF8C40;
+    /* Orange (البرتقالي) */
+    --amwaj-green: #4CAF50;
+    /* Light Green (الأخضر الفاتح) */
+    --amwaj-bg-light: #F5FBFB;
+    /* Light Aqua Background */
+    --amwaj-text-dark: #333333;
+    --amwaj-white: #FFFFFF;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background-color: var(--amwaj-bg-light);
+    color: var(--amwaj-text-dark);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* Global Typography */
+h1,
+h2,
+h3,
+h4 {
+    color: var(--amwaj-text-dark);
+    font-weight: 900;
+    margin-bottom: 25px;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+p {
+    font-size: 1.0em;
+    line-height: 1.7;
+}
+
+a {
+    color: var(--amwaj-secondary);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.no-scroll {
+    overflow: hidden !important;
+}
+
+/* --- Header & Navigation (Fixed 3-Bar Structure) --- */
+header {
+    background-color: var(--amwaj-white);
+    padding: 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+}
+
+.logo img {
+    height: 35px;
+    width: auto;
+}
+
+.logo span {
+    color: var(--amwaj-text-dark);
+    font-size: 1.1em;
+    font-weight: 900;
+}
+
+/* Language & Cart Actions */
+.header-actions-group {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.lang-btn {
+    background-color: var(--amwaj-accent);
+    color: var(--amwaj-white);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 0.9em;
+}
+
+.cart-btn {
+    background: none;
+    border: none;
+    color: var(--amwaj-text-dark);
+    cursor: pointer;
+    font-size: 1.4em;
+    position: relative;
+    padding: 0 5px;
+}
+
+.cart-count {
+    background: var(--amwaj-accent);
+    color: white;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 0.7em;
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    min-width: 18px;
+    text-align: center;
+}
+
+/* Search Bar */
+.search-bar-container {
+    padding: 8px 10px;
+    background-color: var(--amwaj-white);
+    border-bottom: 1px solid var(--amwaj-primary);
+}
+
+.search-input {
+    width: 100%;
+    padding: 8px 20px;
+    border: 1px solid var(--amwaj-secondary);
+    border-radius: 20px;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+/* Scrolling Banner (Marquee) */
+.scrolling-banner {
+    background-color: var(--amwaj-secondary);
+    color: var(--amwaj-white);
+    padding: 6px 0;
+    font-size: 0.9em;
+    font-weight: 700;
+    overflow: hidden; /* مهم: لإخفاء النص الزائد */
+    white-space: nowrap;
+    text-align: left;
+    position: sticky; 
+    top: 105px; /* تثبيته أسفل شريط البحث */
+    z-index: 500;
+}
+
+.scrolling-banner span {
+display: inline-block;
+    padding-left: 100%; /* يبدأ خارج الشاشة */
+    animation: scroll-left 15s linear infinite; /* تطبيق الأنيميشن */}
+/* تعريف الأنيميشن (Wave-like effect or simple scroll) */
+@keyframes scroll-left {
+    0%   { transform: translateX(0%); }
+    100% { transform: translateX(-100%); } /* تحريك العنصر إلى اليسار بعرضه الكامل */
+}
+.scrolling-banner .container {
+    overflow: hidden; /* إخفاء الأجزاء الخارجة من الشريط */
+}
+
+main {
+    padding-top: 70px; 
+    flex-grow: 1;
+}
+.page-section {
+    padding: 30px 0;
+}
+
+/* --- Product & Category Card Styling --- */
+.product-grid,
+.category-grid {
+    display: grid;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.product-card {
+    background-color: var(--amwaj-white);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #DDD;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    max-height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.unit-selector select {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--amwaj-secondary);
+    background-color: var(--amwaj-white);
+    color: var(--amwaj-text-dark);
+    font-weight: 700;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.price-display {
+    font-size: 1.5em;
+    color: var(--amwaj-accent) !important;
+    font-weight: 900 !important;
+    margin: 5px 0 15px 0;
+    width: 100%;
+}
+
+.add-to-cart-btn {
+    background-color: var(--amwaj-green);
+    color: var(--amwaj-white);
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-weight: 700;
+    width: 100%;
+    margin-top: 15px;
+    cursor: pointer;
+    border: none;
+    font-size: 1.1em;
+}
+
+.category-card {
+    background-color: var(--amwaj-white);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 15px 10px;
+    text-align: center;
+    transition: transform 0.3s;
+    cursor: pointer;
+    border: 1px solid #EEE;
+}
+
+.category-card img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 8px;
+}
+
+.category-card:hover {
+    transform: translateY(-3px);
+}
+
+/* --- Footer & Contact Info --- */
+footer {
+    background-color: var(--amwaj-white);
+    padding: 30px 0;
+    border-top: 1px solid #EEE;
+}
+
+.footer-social-links a {
+    margin: 0 5px;
+    font-size: 1.5em;
+}
+
+.footer-social-links i {
+    padding: 5px;
+    border-radius: 50%;
+}
+
+/* --- Utility Buttons (Scroll & Back) --- */
+.utility-buttons {
+    position: fixed;
+    bottom: 30px;
+    z-index: 900;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.utility-buttons button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: var(--amwaj-white);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+html[dir="ltr"] .utility-buttons {
+    left: 15px;
+    right: auto;
+}
+
+
+/*===================================================================*/
+/*                        MOBILE RESPONSIVE STYLES                     */
+/*===================================================================*/
+@media (max-width: 992px) {
+
+    /* Main Content Padding Fix */
+    main {
+        padding-top: 130px !important;
+    }
+
+    /* Adjust to match the fixed header height */
+
+    /* Grid Layouts */
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+        gap: 15px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)) !important;
+        gap: 10px;
+    }
+
+    /* Font Size Adjustments */
+    h2 {
+        font-size: 1.5em;
+    }
+
+    /* Utility Buttons Mobile Adjustment */
+    .utility-buttons {
+        bottom: 80px;
+    }
+
+    /* Move above PWA/Cart/etc. */
+}
+
+@media (max-width: 600px) {
+    .product-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* --- Custom Toast Notification Styling --- */
+#custom-toast {
+    position: fixed;
+    top: 20px;
+    background-color: var(--amwaj-green);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.5s;
+    transform: translateX(100%); /* يبدأ خارج الشاشة من اليمين */
+    
+    /* محاذاة للـ RTL: يمين الشاشة */
+    right: 20px; 
+    left: auto;
+}
+
+#custom-toast.show {
+    opacity: 1;
+    transform: translateX(0); /* يدخل الشاشة من اليمين */
+}
+
+/* محاذاة للـ LTR: (يمكن إبقاؤها كما هي أو تعديلها بناءً على رغبتك) */
+html[dir="ltr"] #custom-toast {
+    right: 20px;
+    left: auto;
+    transform: translateX(100%); /* يبدأ خارج الشاشة من اليمين أيضاً */
+}
+html[dir="ltr"] #custom-toast.show {
+    transform: translateX(0);
+}
+
+/* --- Custom Toast Notification Styling (FIXED VERSION) --- */
+.toast-container {
+    position: fixed;
+    bottom: 20px; /* يظهر من الأسفل لعدم التداخل مع الهيدر */
+    z-index: 9999;
+    padding: 12px 25px;
+    border-radius: 8px;
+    background-color: var(--amwaj-green); /* أخضر السلة */
+    color: white;
+    font-size: 1em;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    
+    /* الحركة والإخفاء الافتراضي */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s, visibility 0.4s, transform 0.4s;
+}
+
+/* التمركز في منتصف الشاشة أفقياً */
+.toast-container {
+    left: 50%;
+    transform: translate(-50%, 50px); /* يبدأ من تحت الشاشة */
+}
+
+/* حالة العرض */
+.toast-container.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0); /* يرتفع للأعلى */
+}

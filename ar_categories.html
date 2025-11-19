@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تصفح جميع الفئات | بقالة أمواج صلالة</title>
+    <link rel="stylesheet" href="style.css?v=2.1">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <!-- 1. الشريط العلوي (Logo, Language, Cart) -->
+        <div class="top-header-bar">
+            <div class="container header-container">
+                <div class="logo header-logo" style="margin-top:10px;">
+                    <a href="index.html" style="display: flex; align-items: center; gap: 5px;">
+                        <img src="images/logo-removebg-preview (3).png" alt="شعار بقالة أمواج صلالة" style="height: 35px; width: auto;">
+                        <span style="font-size: 1.1em; font-weight: 900; color: var(--amwaj-text-dark);">بقالة أمواج صلالة</span>
+                    </a>
+                </div>
+                <div class="header-actions-group">
+                    <a href="en_categories.html" class="lang-btn">English</a>
+                    <button class="cart-btn" onclick="openCart()">
+                        <i class="fas fa-shopping-cart"></i> 
+                        <span class="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- 2. شريط البحث التفاعلي -->
+        <form onsubmit="handleSearch(event)">
+            <div class="search-bar-container">
+                <div class="container">
+                    <input type="text" id="product-search" class="search-input" placeholder="ابحث عن 'أي شيء'...">
+                </div>
+            </div>
+        </form>
+    </header>
+
+    <main style="padding-top: 150px;">
+        <div class="container" style="padding-top: 20px;">
+            <h1 style="text-align: center; color: var(--amwaj-primary);">جميع فئات المنتجات (34 فئة)</h1>
+            
+            <section id="full-categories-section" class="page-section" style="padding: 30px 0;">
+                <div class="category-grid" style="grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));">
+                    <!-- مثال على 8 فئات - قم بتكرارها لـ 34 فئة مع تغيير الـ slug -->
+                    <div class="category-card" onclick="goToCategory('dairy')">
+                        <img src="images/البان.webp" alt="ألبان وأجبان">
+                        <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">ألبان وأجبان</h4>
+                        <p style="font-size: 0.8em; color: #777;">(24 منتج)</p>
+                    </div>
+                    <div class="category-card" onclick="goToCategory('meat')">
+                        <img src="images/لحوم.webp" alt="لحوم ودواجن">
+                        <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">لحوم ودواجن</h4>
+                        <p style="font-size: 0.8em; color: #777;">(35 منتج)</p>
+                    </div>
+                    <div class="category-card" onclick="goToCategory('drinks')">
+                        <img src="images/عصاير.webp" alt="عصائر ومشروبات">
+                        <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">عصائر ومشروبات</h4>
+                        <p style="font-size: 0.8em; color: #777;">(40 منتج)</p>
+                    </div>
+                    <div class="category-card" onclick="goToCategory('snacks')">
+                        <img src="images/وجبات خفيفه.webp" alt="وجبات خفيفة">
+                        <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">وجبات خفيفة</h4>
+                        <p style="font-size: 0.8em; color: #777;">(15 منتج)</p>
+                    </div>
+                    <!-- (كرر الـ category-card) -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Floating Utility Buttons -->
+    <div class="utility-buttons">
+        <button onclick="window.history.back()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+        <button onclick="scrollToTop()" class="back-btn"><i class="fas fa-arrow-up"></i></button>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-social-links" style="text-align: center; margin-bottom: 20px;">
+                <a href="#"><i class="fab fa-tiktok" style="color: white; background: black; border-radius: 50%; padding: 5px;"></i></a>
+                <a href="#"><i class="fab fa-snapchat-ghost" style="color: black; background: #FFFC00; border-radius: 50%; padding: 5px;"></i></a>
+                <a href="#"><i class="fab fa-instagram" style="color: white; background: #E4405F; border-radius: 50%; padding: 5px;"></i></a>
+                <a href="#"><i class="fab fa-facebook-f" style="color: white; background: #1877F2; border-radius: 50%; padding: 5px;"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=96896755118" target="_blank"><i class="fab fa-whatsapp" style="color: white; background: var(--amwaj-green); border-radius: 50%; padding: 5px;"></i></a>
+            </div>
+            
+            <p style="text-align: center; margin: 5px 0; color: var(--amwaj-secondary);">
+                برمجة وتطوير م. عبد العزيز أحمد 
+                <a href="https://api.whatsapp.com/send?phone=96896755118" target="_blank" style="color: var(--amwaj-green); font-weight: 700;">
+                    +968 9675 5118
+                </a>
+            </p>
+            <p style="text-align: center; margin: 0; font-size: 0.9em; color: #777;">
+                &copy; 2025 بقالة أمواج صلالة. جميع الحقوق محفوظة.
+            </p>
+        </div>
+    </footer>
+
+    <script src="main.js?v=2.1"></script>
+    <script>
+        function goToCategory(categorySlug) {
+            // توجيه لصفحة المنتجات الخاصة بالفئة
+            window.location.href = `products.html?category=${categorySlug}`;
+        }
+    </script>
+</body>
+</html>

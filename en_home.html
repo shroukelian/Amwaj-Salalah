@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amwaj Salalah Grocery | Digital WhatsApp Store</title>
+    <meta name="description" content="Shop groceries and hypermarket products through Amwaj Salalah digital store. Order via WhatsApp, fast delivery.">
+    <link rel="stylesheet" href="style.css?v=2.1"> 
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="manifest" href="/manifest.json"> 
+</head>
+
+<body>
+    <header>
+        <!-- 1. Top Bar (Logo, Language, Cart) -->
+        <div class="top-header-bar">
+            <div class="container header-container">
+                <!-- Logo - بقالة أمواج صلالة -->
+                <div class="logo header-logo" style="margin-top:10px;">
+                    <a href="en_home.html" style="display: flex; align-items: center; gap: 5px;">
+                        <img src="images/logo-removebg-preview (3).png" alt="Amwaj Salalah Grocery Logo" style="height: 35px; width: auto;">
+                        <span style="font-size: 1.1em; font-weight: 900; color: var(--amwaj-text-dark);">Amwaj Salalah Grocery</span>
+                    </a>
+                </div>
+                
+                <!-- Language & Cart Icon -->
+                <div class="header-actions-group">
+                    <a href="index.html" class="lang-btn">العربية</a>
+                    <button class="cart-btn" onclick="openCart()">
+                        <i class="fas fa-shopping-cart"></i> 
+                        <span class="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Search Bar -->
+        <form onsubmit="handleSearch(event)">
+            <div class="search-bar-container">
+                <div class="container">
+                    <input type="text" id="product-search" class="search-input" placeholder="Enter Product Name or Category for Interactive Search...">
+                </div>
+            </div>
+        </form>
+
+        <!-- 3. Scrolling Banner (Marquee) -->
+        <div class="scrolling-banner">
+            <div class="container">
+                <span id="marquee-text">✨ Seasonal offers and special discounts await! Shop now and save more. ✨</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" style="padding-top: 20px;">
+            
+            <!-- 1. Deals and Discounts -->
+            <section id="deals-section" class="page-section" style="padding: 20px;">
+                <h2 style="color: var(--amwaj-accent); border-bottom: 2px solid var(--amwaj-accent); padding-bottom: 10px; text-align: left;">Today's Deals and Discounts</h2>
+                <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                    
+                    <!-- Placeholder Product Card (ID: 1) -->
+                    <div class="product-card" id="product-1">
+                        <img src="images/مانجا.webp" alt="Mango Juice">
+                        <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">Fresh Mango Juice</h4>
+                        <p style="font-size: 0.9em; color: #777;">1 Liter Bottle</p>
+                        <div class="unit-selector">
+                            <select id="unit-1" onchange="updatePrice('1', 1.350, 2.500)">
+                                <option value="piece">Single Bottle</option>
+                                <option value="carton">Carton (6 pieces)</option>
+                            </select>
+                        </div>
+                        <p class="price-display" id="price-1">1.350 OMR</p>
+                        <button class="add-to-cart-btn" data-price="1.350" onclick="addToCart('1', 'Fresh Mango Juice', 'Single Bottle')">Add to Cart</button>
+                    </div>
+                    
+                    <!-- Placeholder Product Card (ID: 2) -->
+                    <div class="product-card" id="product-2">
+                        <img src="images/مياه.webp" alt="Oasis Water">
+                        <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">Oasis Bottled Water</h4>
+                        <p style="font-size: 0.9em; color: #777;">500 ml bottle</p>
+                        <div class="unit-selector">
+                            <select id="unit-2" onchange="updatePrice('2', 0.150, 1.500)">
+                                <option value="piece">Single Bottle</option>
+                                <option value="carton">Carton (24 bottles)</option>
+                            </select>
+                        </div>
+                        <p class="price-display" id="price-2">0.150 OMR</p>
+                        <button class="add-to-cart-btn" data-price="0.150" onclick="addToCart('2', 'Oasis Water', 'Single Bottle')">Add to Cart</button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 2. Bestsellers -->
+            <section id="bestsellers-section" class="page-section" style="padding: 30px 0;">
+                <h2 style="color: var(--amwaj-primary); border-bottom: 2px solid var(--amwaj-primary); padding-bottom: 10px; text-align: left;">Bestselling Products</h2>
+                <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                    <!-- Placeholder Product Card: Mango as Bestseller -->
+                    <div class="product-card" id="product-best-1">
+                        <img src="images/مانجا.webp" alt="Fresh Mango Juice">
+                        <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">Fresh Mango Juice</h4>
+                        <p style="font-size: 0.9em; color: #777;">1 Liter Bottle</p>
+                        <div class="unit-selector">
+                            <select id="unit-best-1" onchange="updatePrice('best-1', 1.350, 2.500)">
+                                <option value="piece">Single Bottle</option>
+                                <option value="carton">Carton (6 pieces)</option>
+                            </select>
+                        </div>
+                        <p class="price-display" id="price-best-1">1.350 OMR</p>
+                        <button class="add-to-cart-btn" data-price="1.350" onclick="addToCart('best-1', 'Fresh Mango Juice', 'Single Bottle')">Add to Cart</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Shop by Category -->
+            <section id="categories-section" class="page-section" style="padding: 30px 0;">
+                <h2 style="color: var(--amwaj-text-dark); border-bottom: 2px solid var(--amwaj-text-dark); padding-bottom: 10px; text-align: left;">Shop by Category</h2>
+                <div class="category-grid" style="grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));">
+                    <!-- Placeholder Category Cards (On click, navigates to en_categories.html) -->
+                    <div class="category-card" onclick="goToCategoryPage()">
+                        <img src="images/البان.webp" alt="Dairy & Cheese">
+                        <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">Dairy & Cheese</h4>
+                        <p style="font-size: 0.8em; color: #777;">(24 Products)</p>
+                    </div>
+                </div>
+                <!-- Link to full category page -->
+                <p style="text-align: center; margin-top: 30px;">
+                    <a href="en_categories.html" class="btn-secondary" style="font-size: 1.1em; padding: 10px 30px; border-radius: 50px;">
+                        Browse All Categories (34)
+                    </a>
+                </p>
+            </section>
+            
+        </div>
+    </main>
+
+    <!-- Floating Utility Buttons -->
+    <div class="utility-buttons">
+        <button onclick="window.history.back()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+        <button onclick="scrollToTop()" class="back-btn"><i class="fas fa-arrow-up"></i></button>
+    </div>
+    
+    <!-- PWA Install Prompt (Code remains in all files) -->
+    <div id="install-banner" style="display:none; position:fixed; bottom:0; width:100%; background:var(--amwaj-primary); color:white; text-align:center; padding:15px; z-index:1000;">
+        <p style="margin:0; font-size:1.1em;">Add store to your home screen! <button onclick="installPWA()" style="background:var(--amwaj-accent); color:white; border:none; padding:8px 15px; border-radius:5px; margin-left:15px;">Install App</button></p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-social-links" style="text-align: center; margin-bottom: 20px;">
+                <a href="#"><i class="fab fa-tiktok" style="color: white; background: black; border-radius: 50%; padding: 5px;"></i></a>
+                <a href="#"><i class="fab fa-snapchat-ghost" style="color: black; background: #FFFC00; border-radius: 50%; padding: 5px;"></i></a>
+                <a href="#"><i class="fab fa-instagram" style="color: white; background: #E4405F; border-radius: 50%; padding: 5px;"></i></a>
+                <a href="#"><i class="fab fa-facebook-f" style="color: white; background: #1877F2; border-radius: 50%; padding: 5px;"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=96896755118" target="_blank"><i class="fab fa-whatsapp" style="color: white; background: var(--amwaj-green); border-radius: 50%; padding: 5px;"></i></a>
+            </div>
+            
+            <p style="text-align: center; margin: 5px 0; color: var(--amwaj-secondary);">
+                Programming and development by Eng. Abdulaziz Ahmed 
+                <a href="https://api.whatsapp.com/send?phone=96896755118" target="_blank" style="color: var(--amwaj-green); font-weight: 700;">
+                    +968 9675 5118
+                </a>
+            </p>
+            <p style="text-align: center; margin: 0; font-size: 0.9em; color: #777;">
+                &copy; 2025 Amwaj Salalah Grocery. All rights reserved.
+            </p>
+        </div>
+    </footer>
+    
+    <script src="main.js?v=2.1"></script>
+    <script>
+        // Update function definition for English home page
+        function goToCategoryPage() {
+            window.location.href = 'en_categories.html';
+        }
+    </script>
+</body>
+</html>
