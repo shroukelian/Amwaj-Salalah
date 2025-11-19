@@ -14,10 +14,22 @@
         <!-- 1. الشريط العلوي (Logo, Language, Cart) -->
         <div class="top-header-bar">
             <div class="container header-container">
-                <div class="logo header-logo" style="margin-top:10px;">
+                <div class="logo header-logo">
                     <a href="index.html" style="display: flex; align-items: center; gap: 5px;">
-                        <img src="images/logo-removebg-preview (3).png" alt="شعار بقالة أمواج صلالة" style="height: 35px; width: auto;">
-                        <span style="font-size: 1.1em; font-weight: 900; color: var(--amwaj-text-dark);">بقالة أمواج صلالة</span>
+                        <img src="images/logo-removebg-preview (3).png" alt="شعار بقالة أمواج صلالة"
+                            style="height: 35px; width: auto;">
+
+                        <!-- إضافة الشعار والنص الثانوي في حاوية عمودية -->
+                        <div class="logo-text-wrapper"
+                            style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <span class="main-logo-title"
+                                style="font-size: 1.1em; font-weight: 900; color: var(--amwaj-text-dark);">بقالة أمواج
+                                صلالة</span>
+                            <span class="secondary-tagline"
+                                style="font-size: 0.75em; color: var(--amwaj-secondary); margin-top: -3px; font-weight: 600;">خدمة
+                                24ساعة / توصيل سريع</span>
+                        </div>
+
                     </a>
                 </div>
                 <div class="header-actions-group">
@@ -31,12 +43,17 @@
         </div>
         <!-- 2. شريط البحث التفاعلي -->
         <form onsubmit="handleSearch(event)">
-            <div class="search-bar-container">
-                <div class="container">
-                    <input type="text" id="product-search" class="search-input" placeholder="ابحث عن 'أي شيء'...">
-                </div>
+    <div class="search-bar-container">
+        <div class="container" style="position: relative;">
+            <input type="text" id="product-search" class="search-input" placeholder="اكتب اسم المنتج أو الفئة للبحث التفاعلي..." oninput="liveSearch(this.value)">
+            
+            <!-- مكان ظهور نتائج البحث التفاعلي (مخفي افتراضياً) -->
+            <div id="live-search-results" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #DDD; border-top: none; max-height: 200px; overflow-y: auto; z-index: 1001; box-shadow: 0 5px 10px rgba(0,0,0,0.1);">
+                <!-- النتائج ستظهر هنا -->
             </div>
-        </form>
+        </div>
+    </div>
+</form>
     </header>
 
     <main style="padding-top: 150px;">
@@ -107,5 +124,6 @@
             window.location.href = `products.html?category=${categorySlug}`;
         }
     </script>
+    
 </body>
 </html>

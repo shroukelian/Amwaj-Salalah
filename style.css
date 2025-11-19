@@ -449,3 +449,122 @@ html[dir="ltr"] #custom-toast.show {
         display: block; /* لضمان أن margin auto يعمل */
     }
 }
+/* --- Amwaj Salalah Theme Colors (Waves) --- */
+
+.product-card, .category-card {
+    /* ... (Existing styles) ... */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* ظل خفيف وبارز */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.product-card:hover, .category-card:hover {
+    transform: translateY(-5px); /* حركة رفع خفيفة */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Price Display & Discount (جديد) --- */
+.price-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+.original-price {
+    color: #999;
+    text-decoration: line-through; /* خط مشطوب */
+    font-size: 0.9em;
+    font-weight: 400;
+    margin-bottom: 3px;
+}
+.current-price {
+    font-size: 1.5em;
+    color: var(--amwaj-accent) !important;
+    font-weight: 900 !important;
+}
+
+/* --- Quantity Buttons (+ and -) --- */
+.quantity-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.qty-btn {
+    background-color: var(--amwaj-green);
+    color: var(--amwaj-white);
+    border: none;
+    padding: 8px 12px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    line-height: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+.qty-display {
+    width: 50px;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--amwaj-text-dark);
+}
+
+/* --- Scrolling Banner (تعديل حركة RTL) --- */
+.scrolling-banner span {
+    padding-left: 0; /* إلغاء البادنج السابق */
+    animation: scroll-rtl 15s linear infinite; /* تطبيق الأنيميشن الجديد */
+}
+/* تعريف الحركة من اليسار لليمين (RTL) */
+@keyframes scroll-rtl {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(100%); } /* التحريك من اليسار لليمين */
+}
+
+
+/* --- Mobile Adjustments (لعرض منتجين) --- */
+@media (max-width: 992px) {
+    /* ... (Existing styles) ... */
+    
+    /* عرض منتجين على الأقل في وضع الجوال العمودي */
+    .product-grid { 
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important; /* تقليل الحد الأدنى ليتسع منتجين */
+        gap: 10px;
+    }
+}
+@media (max-width: 600px) {
+    /* ولكن في الشاشات الأصغر جداً، نعود لمنتج واحد */
+    .product-grid { grid-template-columns: 1fr !important; }
+}
+/* --- Global Styles: Logo Fix --- */
+.logo a {
+    /* ... (Existing styles: display: flex, align-items: center, gap: 5px) ... */
+    align-items: center; 
+}
+.logo-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* المحاذاة لليمين في RTL */
+}
+/* تعديلات RTL/LTR */
+html[dir="rtl"] .logo-text-wrapper { align-items: flex-start; }
+html[dir="ltr"] .logo-text-wrapper { align-items: flex-start; }
+
+/* ... (تأكد من تحديث .logo span القديم إلى .main-logo-title) ... */
+.main-logo-title {
+    color: var(--amwaj-text-dark);
+    font-size: 1.1em;
+    font-weight: 900;
+}
+.secondary-tagline {
+    font-size: 0.75em;
+    color: var(--amwaj-secondary);
+    margin-top: -3px;
+    font-weight: 600;
+}

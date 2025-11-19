@@ -16,19 +16,28 @@
         <div class="top-header-bar">
             <div class="container header-container">
                 <!-- Logo - بقالة أمواج صلالة -->
-                <div class="logo header-logo" style="margin-top:10px;">
+                <div class="logo header-logo">
                     <a href="index.html" style="display: flex; align-items: center; gap: 5px;">
-                        <!-- يجب وضع صورة شعار بقالة أمواج صلالة هنا -->
                         <img src="images/logo-removebg-preview (3).png" alt="شعار بقالة أمواج صلالة"
                             style="height: 35px; width: auto;">
-                        <span style="font-size: 1.1em; font-weight: 900; color: var(--amwaj-text-dark);">بقالة أمواج
-                            صلالة</span>
+
+                        <!-- إضافة الشعار والنص الثانوي في حاوية عمودية -->
+                        <div class="logo-text-wrapper"
+                            style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <span class="main-logo-title"
+                                style="font-size: 1.1em; font-weight: 900; color: var(--amwaj-text-dark);">بقالة أمواج
+                                صلالة</span>
+                            <span class="secondary-tagline"
+                                style="font-size: 0.75em; color: var(--amwaj-secondary); margin-top: -3px; font-weight: 600;">خدمة
+                                24ساعة / توصيل سريع</span>
+                        </div>
+
                     </a>
                 </div>
 
                 <!-- Language & Cart Icon -->
                 <div class="header-actions-group">
-                    <a href="en_home.html" class="lang-btn">English</a>
+                    <a href="en_products.html" class="lang-btn">English</a>
                     <button class="cart-btn" onclick="openCart()">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="cart-count">0</span>
@@ -40,9 +49,15 @@
         <!-- 2. شريط البحث التفاعلي (Search Bar) -->
         <form onsubmit="handleSearch(event)">
             <div class="search-bar-container">
-                <div class="container">
+                <div class="container" style="position: relative;">
                     <input type="text" id="product-search" class="search-input"
-                        placeholder="اكتب اسم المنتج أو الفئة للبحث التفاعلي...">
+                        placeholder="اكتب اسم المنتج أو الفئة للبحث التفاعلي..." oninput="liveSearch(this.value)">
+
+                    <!-- مكان ظهور نتائج البحث التفاعلي (مخفي افتراضياً) -->
+                    <div id="live-search-results"
+                        style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #DDD; border-top: none; max-height: 200px; overflow-y: auto; z-index: 1001; box-shadow: 0 5px 10px rgba(0,0,0,0.1);">
+                        <!-- النتائج ستظهر هنا -->
+                    </div>
                 </div>
             </div>
         </form>
@@ -65,45 +80,79 @@
             </p>
 
             <section id="category-products-section" class="page-section" style="padding: 0;">
-                <div class="product-grid" id="product-list-container"
-                    style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+    <div class="product-grid" id="product-list-container"
+        style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
 
-                    <!-- Placeholder Product Card (ID: 3) -->
-                    <div class="product-card" id="product-3">
-                        <img src="images/حليب.webp" alt="حليب طازج">
-                        <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">حليب المراعي طازج</h4>
-                        <p style="font-size: 0.9em; color: #777;">قنينة 1 لتر</p>
-                        <div class="unit-selector">
-                            <select id="unit-3" onchange="updatePrice('3', 0.500, 5.500)">
-                                <option value="piece">قنينة واحدة</option>
-                                <option value="carton">بالكرتون (12 حبة)</option>
-                            </select>
-                        </div>
-                        <p class="price-display" id="price-3">0.500 ر.ع</p>
-                        <button class="add-to-cart-btn" data-price="0.500"
-                            onclick="addToCart('3', 'حليب المراعي', 'قنينة واحدة')">أضف للسلة</button>
-                    </div>
+        <!-- Placeholder Product Card (ID: 3) - حليب المراعي طازج -->
+        <div class="product-card" id="product-3">
+            <div class="product-image-wrapper">
+                <img src="images/حليب.webp" alt="حليب طازج">
+            </div>
+            
+            <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">حليب المراعي طازج</h4>
+            <p style="font-size: 0.9em; color: #777;">قنينة 1 لتر</p>
+            
+            <div class="unit-selector">
+                <select id="unit-3" onchange="updatePrice('3', 0.500, 5.500, 0.600)">
+                    <option value="piece">قنينة واحدة</option>
+                    <option value="carton">بالكرتون (12 حبة)</option>
+                </select>
+            </div>
+            
+            <!-- قسم السعر الجديد مع الخصم -->
+            <div class="price-section">
+                <p class="original-price" data-original="0.600 ر.ع" style="display:block;">0.600 ر.ع</p>
+                <p class="current-price" id="price-3">0.500 ر.ع</p>
+            </div>
 
-                    <!-- Placeholder Product Card (ID: 4) -->
-                    <div class="product-card" id="product-4">
-                        <img src="images/جبنه شيدر.webp" alt="جبن شيدر">
-                        <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">جبن شيدر طبيعي</h4>
-                        <p style="font-size: 0.9em; color: #777;">عبوة 500 جرام</p>
-                        <div class="unit-selector">
-                            <select id="unit-4" onchange="updatePrice('4', 1.200, 10.000)">
-                                <option value="piece">عبوة واحدة</option>
-                                <option value="carton">بالصندوق (10 عبوات)</option>
-                            </select>
-                        </div>
-                        <p class="price-display" id="price-4">1.200 ر.ع</p>
-                        <button class="add-to-cart-btn" data-price="1.200"
-                            onclick="addToCart('4', 'جبن شيدر', 'عبوة واحدة')">أضف للسلة</button>
-                    </div>
+            <!-- **أزرار الكمية + و – (مضافة ومصححة)** -->
+            <div class="quantity-control">
+                <button class="qty-btn" onclick="updateQuantity('3', 'decrement')"><i class="fas fa-minus"></i></button>
+                <span class="qty-display" id="qty-3">0</span>
+                <button class="qty-btn" onclick="updateQuantity('3', 'increment')"><i class="fas fa-plus"></i></button>
+            </div>
 
-                    <!-- ... (بقية منتجات الفئة) ... -->
+            <!-- زر الإضافة (يستدعي addToCart مع ID فقط) -->
+            <button class="add-to-cart-btn" data-price="0.500" onclick="addToCart('3')">أضف للسلة</button>
+        </div>
 
-                </div>
-            </section>
+        <!-- Placeholder Product Card (ID: 4) - جبن شيدر طبيعي -->
+        <div class="product-card" id="product-4">
+            <div class="product-image-wrapper">
+                <img src="images/جبنه شيدر.webp" alt="جبن شيدر">
+            </div>
+            
+            <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">جبن شيدر طبيعي</h4>
+            <p style="font-size: 0.9em; color: #777;">عبوة 500 جرام</p>
+            
+            <div class="unit-selector">
+                <select id="unit-4" onchange="updatePrice('4', 1.200, 10.000, 1.500)">
+                    <option value="piece">عبوة واحدة</option>
+                    <option value="carton">بالصندوق (10 عبوات)</option>
+                </select>
+            </div>
+            
+            <!-- قسم السعر الجديد مع الخصم -->
+            <div class="price-section">
+                <p class="original-price" data-original="1.500 ر.ع" style="display:block;">1.500 ر.ع</p>
+                <p class="current-price" id="price-4">1.200 ر.ع</p>
+            </div>
+
+            <!-- **أزرار الكمية + و – (مضافة ومصححة)** -->
+            <div class="quantity-control">
+                <button class="qty-btn" onclick="updateQuantity('4', 'decrement')"><i class="fas fa-minus"></i></button>
+                <span class="qty-display" id="qty-4">0</span>
+                <button class="qty-btn" onclick="updateQuantity('4', 'increment')"><i class="fas fa-plus"></i></button>
+            </div>
+
+            <!-- زر الإضافة (يستدعي addToCart مع ID فقط) -->
+            <button class="add-to-cart-btn" data-price="1.200" onclick="addToCart('4')">أضف للسلة</button>
+        </div>
+
+        <!-- ... (بقية منتجات الفئة) ... -->
+
+    </div>
+</section>
         </div>
     </main>
 
@@ -151,7 +200,7 @@
             let categoryName = "جميع المنتجات";
             if (categorySlug === 'dairy') categoryName = "الألبان والأجبان";
             if (categorySlug === 'meat') categoryName = "اللحوم والدواجن";
-                  // **أضف الفئات المفقودة هنا:**
+            // **أضف الفئات المفقودة هنا:**
             if (categorySlug === 'drinks') categoryName = "العصائر والمشروبات"; // <-- تم الإضافة
             if (categorySlug === 'snacks') categoryName = "الوجبات الخفيفة";    // <-- تم الإضافة
 
@@ -162,8 +211,9 @@
             updatePrice('3', 0.500, 5.500);
             updatePrice('4', 1.200, 10.000);
         });
-        
+
     </script>
+    
 </body>
 
 </html>

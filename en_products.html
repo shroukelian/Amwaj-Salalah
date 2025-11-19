@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="ltr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,21 +11,38 @@
 </head>
 
 <body>
+    <!-- Toast Notification Structure -->
+    <!-- <div id="custom-toast" class="toast-container">
+        <span id="toast-message"></span>
+    </div> -->
+
     <header>
         <!-- 1. Top Bar (Logo, Language, Cart) -->
         <div class="top-header-bar">
             <div class="container header-container">
-                <div class="logo header-logo" style="margin-top:10px;">
+                <!-- Logo - Amwaj Salalah Grocery (with Tagline) -->
+                <div class="logo header-logo">
                     <a href="en_home.html" style="display: flex; align-items: center; gap: 5px;">
-                        <img src="images/logo-removebg-preview (3).png" alt="Amwaj Salalah Grocery Logo" style="height: 35px; width: auto;">
-                        <span style="font-size: 1.1em; font-weight: 900; color: var(--amwaj-text-dark);">Amwaj Salalah Grocery</span>
+                        <img src="images/logo-removebg-preview (3).png" alt="Amwaj Salalah Grocery Logo"
+                            style="height: 35px; width: auto;">
+
+                        <!-- Logo and Secondary Tagline -->
+                        <div class="logo-text-wrapper"
+                            style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <span class="main-logo-title"
+                                style="font-size: 1.1em; font-weight: 900; color: var(--amwaj-text-dark);">Amwaj Salalah Grocery</span>
+                            <span class="secondary-tagline"
+                                style="font-size: 0.75em; color: var(--amwaj-secondary); margin-top: -3px; font-weight: 600;">24H Service / Fast Delivery</span>
+                        </div>
+
                     </a>
                 </div>
-                
+
+                <!-- Language & Cart Icon -->
                 <div class="header-actions-group">
                     <a href="products.html?category=dairy" class="lang-btn">العربية</a>
                     <button class="cart-btn" onclick="openCart()">
-                        <i class="fas fa-shopping-cart"></i> 
+                        <i class="fas fa-shopping-cart"></i>
                         <span class="cart-count">0</span>
                     </button>
                 </div>
@@ -34,8 +52,15 @@
         <!-- 2. Search Bar -->
         <form onsubmit="handleSearch(event)">
             <div class="search-bar-container">
-                <div class="container">
-                    <input type="text" id="product-search" class="search-input" placeholder="Enter Product Name or Category for Interactive Search...">
+                <div class="container" style="position: relative;">
+                    <input type="text" id="product-search" class="search-input"
+                        placeholder="Enter Product Name or Category for Interactive Search..." oninput="liveSearch(this.value)">
+
+                    <!-- Place for Live Search Results -->
+                    <div id="live-search-results"
+                        style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #DDD; border-top: none; max-height: 200px; overflow-y: auto; z-index: 1001; box-shadow: 0 5px 10px rgba(0,0,0,0.1);">
+                        <!-- Results will appear here -->
+                    </div>
                 </div>
             </div>
         </form>
@@ -58,38 +83,69 @@
             </p>
 
             <section id="category-products-section" class="page-section" style="padding: 0;">
-                <div class="product-grid" id="product-list-container" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-                    
+                <div class="product-grid" id="product-list-container"
+                    style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+
                     <!-- Placeholder Product Card (ID: 3) - Milk -->
                     <div class="product-card" id="product-3">
-                        <img src="images/milk-bottle.jpg" alt="Fresh Milk">
+                        <div class="product-image-wrapper">
+                            <img src="images/حليب.webp" alt="Fresh Milk">
+                        </div>
                         <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">Al Marai Fresh Milk</h4>
                         <p style="font-size: 0.9em; color: #777;">1 Liter Bottle</p>
+                        
                         <div class="unit-selector">
                             <select id="unit-3" onchange="updatePrice('3', 0.500, 5.500)">
                                 <option value="piece">Single Bottle</option>
                                 <option value="carton">By Carton (12 pcs)</option>
                             </select>
                         </div>
-                        <p class="price-display" id="price-3">0.500 OMR</p>
-                        <button class="add-to-cart-btn" data-price="0.500" onclick="addToCart('3', 'Al Marai Fresh Milk', 'Single Bottle')">Add to Cart</button>
+                        
+                        <div class="price-section">
+                            <p class="original-price" data-original="0.600 OMR" style="display:none;">0.600 OMR</p>
+                            <p class="current-price" id="price-3">0.500 OMR</p>
+                        </div>
+                        
+                        <div class="quantity-control">
+                            <button class="qty-btn" onclick="updateQuantity('3', 'decrement')"><i
+                                    class="fas fa-minus"></i></button>
+                            <span class="qty-display" id="qty-3">0</span>
+                            <button class="qty-btn" onclick="updateQuantity('3', 'increment')"><i
+                                    class="fas fa-plus"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn" data-price="0.500" onclick="addToCart('3')">Add to Cart</button>
                     </div>
 
                     <!-- Placeholder Product Card (ID: 4) - Cheese -->
                     <div class="product-card" id="product-4">
-                        <img src="images/cheese-pack.jpg" alt="Cheddar Cheese">
+                        <div class="product-image-wrapper">
+                            <img src="images/جبنه شيدر.webp" alt="Cheddar Cheese">
+                        </div>
                         <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">Natural Cheddar Cheese</h4>
                         <p style="font-size: 0.9em; color: #777;">500 Gram Pack</p>
+                        
                         <div class="unit-selector">
                             <select id="unit-4" onchange="updatePrice('4', 1.200, 10.000)">
                                 <option value="piece">Single Pack</option>
                                 <option value="carton">By Box (10 packs)</option>
                             </select>
                         </div>
-                        <p class="price-display" id="price-4">1.200 OMR</p>
-                        <button class="add-to-cart-btn" data-price="1.200" onclick="addToCart('4', 'Cheddar Cheese', 'Single Pack')">Add to Cart</button>
+                        
+                        <div class="price-section">
+                            <p class="original-price" data-original="1.500 OMR" style="display:none;">1.500 OMR</p>
+                            <p class="current-price" id="price-4">1.200 OMR</p>
+                        </div>
+                        
+                        <div class="quantity-control">
+                            <button class="qty-btn" onclick="updateQuantity('4', 'decrement')"><i
+                                    class="fas fa-minus"></i></button>
+                            <span class="qty-display" id="qty-4">0</span>
+                            <button class="qty-btn" onclick="updateQuantity('4', 'increment')"><i
+                                    class="fas fa-plus"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn" data-price="1.200" onclick="addToCart('4')">Add to Cart</button>
                     </div>
-                    
+
                 </div>
             </section>
         </div>
@@ -100,20 +156,26 @@
         <button onclick="window.history.back()" class="back-btn"><i class="fas fa-arrow-left"></i></button>
         <button onclick="scrollToTop()" class="back-btn"><i class="fas fa-arrow-up"></i></button>
     </div>
-    
+
     <footer>
         <div class="container">
             <div class="footer-social-links" style="text-align: center; margin-bottom: 20px;">
-                <a href="#"><i class="fab fa-tiktok" style="color: white; background: black; border-radius: 50%; padding: 5px;"></i></a>
-                <a href="#"><i class="fab fa-snapchat-ghost" style="color: black; background: #FFFC00; border-radius: 50%; padding: 5px;"></i></a>
-                <a href="#"><i class="fab fa-instagram" style="color: white; background: #E4405F; border-radius: 50%; padding: 5px;"></i></a>
-                <a href="#"><i class="fab fa-facebook-f" style="color: white; background: #1877F2; border-radius: 50%; padding: 5px;"></i></a>
-                <a href="https://api.whatsapp.com/send?phone=96896755118" target="_blank"><i class="fab fa-whatsapp" style="color: white; background: var(--amwaj-green); border-radius: 50%; padding: 5px;"></i></a>
+                <a href="#"><i class="fab fa-tiktok"
+                        style="color: white; background: black; border-radius: 50%; padding: 5px;"></i></a>
+                <a href="#"><i class="fab fa-snapchat-ghost"
+                        style="color: black; background: #FFFC00; border-radius: 50%; padding: 5px;"></i></a>
+                <a href="#"><i class="fab fa-instagram"
+                        style="color: white; background: #E4405F; border-radius: 50%; padding: 5px;"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"
+                        style="color: white; background: #1877F2; border-radius: 50%; padding: 5px;"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=96896755118" target="_blank"><i class="fab fa-whatsapp"
+                        style="color: white; background: var(--amwaj-green); border-radius: 50%; padding: 5px;"></i></a>
             </div>
-            
+
             <p style="text-align: center; margin: 5px 0; color: var(--amwaj-secondary);">
-                Programming and development by Eng. Abdulaziz Ahmed 
-                <a href="https://api.whatsapp.com/send?phone=96896755118" target="_blank" style="color: var(--amwaj-green); font-weight: 700;">
+                Programming and development by Eng. Abdulaziz Ahmed
+                <a href="https://api.whatsapp.com/send?phone=96896755118" target="_blank"
+                    style="color: var(--amwaj-green); font-weight: 700;">
                     +968 9675 5118
                 </a>
             </p>
@@ -128,18 +190,23 @@
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const categorySlug = urlParams.get('category');
-            
+
             let categoryName = "All Products";
             if (categorySlug === 'dairy') categoryName = "Dairy & Cheese";
             if (categorySlug === 'meat') categoryName = "Meat & Poultry";
-            
+            if (categorySlug === 'drinks') categoryName = "Juices & Drinks";
+            if (categorySlug === 'snacks') categoryName = "Snacks";
+
             document.getElementById('category-name-display').textContent = categoryName;
-            document.getElementById('product-count-display').textContent = "24"; 
-            
+            document.getElementById('product-count-display').textContent = "24";
+
             // Initialize prices for the demo products
-            updatePrice('3', 0.500, 5.500);
-            updatePrice('4', 1.200, 10.000);
+            updatePrice('3', 0.500, 5.500, 0.600); // Milk (Discounted from 0.600)
+            updatePrice('4', 1.200, 10.000, 1.500); // Cheese (Discounted from 1.500)
         });
+
     </script>
+
 </body>
+
 </html>
