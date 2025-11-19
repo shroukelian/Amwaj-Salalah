@@ -108,20 +108,20 @@ function goToCategoryPage() {
     window.location.href = 'ar_categories.html';
 }
 
+// main.js - دالة handleSearch
+
 function handleSearch(event) {
-    event.preventDefault(); 
+    event.preventDefault(); // منع الإرسال الافتراضي للصفحة
     const query = document.getElementById('product-search').value.trim();
 
     if (query.length > 0) {
-        // توجيه لصفحة المنتجات مع نتائج البحث (Products Search Results)
-        // (ستحتاج لإنشاء هذه الصفحة products.html)
+        // توجيه لصفحة المنتجات مع نتائج البحث
         window.location.href = `products.html?q=${encodeURIComponent(query)}`;
     } else {
         // إذا كان فارغاً، يمكن توجيهه إلى صفحة جميع الفئات
-        goToCategoryPage();
+        window.location.href = 'ar_categories.html'; 
     }
 }
-
 // Initializers
 document.addEventListener('DOMContentLoaded', () => {
     // Initial Price Setup (for demo product)

@@ -219,7 +219,7 @@ main {
     width: 100%;
     height: auto;
     max-height: 180px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 10px;
     margin-bottom: 10px;
 }
@@ -431,4 +431,21 @@ html[dir="ltr"] #custom-toast.show {
     opacity: 1;
     visibility: visible;
     transform: translate(-50%, 0); /* يرتفع للأعلى */
+}
+/* --- تعديلات خاصة بشريط البحث في وضع الموبايل --- */
+@media (max-width: 992px) {
+
+    /* 1. جعل الحاوية مركزية */
+    .search-bar-container {
+        display: flex;
+        justify-content: center; /* توسيط الحاوية الأب */
+    }
+
+    /* 2. ضبط عرض وتوسيط حقل الإدخال نفسه */
+    .search-input {
+        width: 95%; /* أعطه عرضاً كبيراً ولكن ليس 100% لتجنب الالتصاق */
+        max-width: 400px; /* تحديد أقصى عرض */
+        margin: 0 auto; /* توسيط العنصر نفسه أفقياً */
+        display: block; /* لضمان أن margin auto يعمل */
+    }
 }
