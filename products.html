@@ -80,79 +80,83 @@
             </p>
 
             <section id="category-products-section" class="page-section" style="padding: 0;">
-    <div class="product-grid" id="product-list-container"
-        style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <div class="product-grid" id="product-list-container"
+                    style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
 
-        <!-- Placeholder Product Card (ID: 3) - حليب المراعي طازج -->
-        <div class="product-card" id="product-3">
-            <div class="product-image-wrapper">
-                <img src="images/حليب.webp" alt="حليب طازج">
-            </div>
-            
-            <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">حليب المراعي طازج</h4>
-            <p style="font-size: 0.9em; color: #777;">قنينة 1 لتر</p>
-            
-            <div class="unit-selector">
-                <select id="unit-3" onchange="updatePrice('3', 0.500, 5.500, 0.600)">
-                    <option value="piece">قنينة واحدة</option>
-                    <option value="carton">بالكرتون (12 حبة)</option>
-                </select>
-            </div>
-            
-            <!-- قسم السعر الجديد مع الخصم -->
-            <div class="price-section">
-                <p class="original-price" data-original="0.600 ر.ع" style="display:block;">0.600 ر.ع</p>
-                <p class="current-price" id="price-3">0.500 ر.ع</p>
-            </div>
+                    <!-- Placeholder Product Card (ID: 3) - حليب المراعي طازج -->
+                    <div class="product-card" id="product-3">
+                        <div class="product-image-wrapper">
+                            <img src="images/حليب.webp" alt="حليب طازج">
+                        </div>
 
-            <!-- **أزرار الكمية + و – (مضافة ومصححة)** -->
-            <div class="quantity-control">
-                <button class="qty-btn" onclick="updateQuantity('3', 'decrement')"><i class="fas fa-minus"></i></button>
-                <span class="qty-display" id="qty-3">0</span>
-                <button class="qty-btn" onclick="updateQuantity('3', 'increment')"><i class="fas fa-plus"></i></button>
-            </div>
+                        <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">حليب المراعي طازج</h4>
+                        <p style="font-size: 0.9em; color: #777;">قنينة 1 لتر</p>
 
-            <!-- زر الإضافة (يستدعي addToCart مع ID فقط) -->
-            <button class="add-to-cart-btn" data-price="0.500" onclick="addToCart('3')">أضف للسلة</button>
-        </div>
+                        <div class="unit-selector">
+                            <select id="unit-3" onchange="updatePrice('3', 0.500, 5.500, 0.600)">
+                                <option value="piece">قنينة واحدة</option>
+                                <option value="carton">بالكرتون (12 حبة)</option>
+                            </select>
+                        </div>
 
-        <!-- Placeholder Product Card (ID: 4) - جبن شيدر طبيعي -->
-        <div class="product-card" id="product-4">
-            <div class="product-image-wrapper">
-                <img src="images/جبنه شيدر.webp" alt="جبن شيدر">
-            </div>
-            
-            <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">جبن شيدر طبيعي</h4>
-            <p style="font-size: 0.9em; color: #777;">عبوة 500 جرام</p>
-            
-            <div class="unit-selector">
-                <select id="unit-4" onchange="updatePrice('4', 1.200, 10.000, 1.500)">
-                    <option value="piece">عبوة واحدة</option>
-                    <option value="carton">بالصندوق (10 عبوات)</option>
-                </select>
-            </div>
-            
-            <!-- قسم السعر الجديد مع الخصم -->
-            <div class="price-section">
-                <p class="original-price" data-original="1.500 ر.ع" style="display:block;">1.500 ر.ع</p>
-                <p class="current-price" id="price-4">1.200 ر.ع</p>
-            </div>
+                        <!-- قسم السعر الجديد مع الخصم -->
+                        <div class="price-section">
+                            <p class="original-price" data-original="0.600 ر.ع" style="display:block;">0.600 ر.ع</p>
+                            <p class="current-price" id="price-3">0.500 ر.ع</p>
+                        </div>
 
-            <!-- **أزرار الكمية + و – (مضافة ومصححة)** -->
-            <div class="quantity-control">
-                <button class="qty-btn" onclick="updateQuantity('4', 'decrement')"><i class="fas fa-minus"></i></button>
-                <span class="qty-display" id="qty-4">0</span>
-                <button class="qty-btn" onclick="updateQuantity('4', 'increment')"><i class="fas fa-plus"></i></button>
-            </div>
+                        <!-- **أزرار الكمية + و – (مضافة ومصححة)** -->
+                        <div class="quantity-control">
+                            <button class="qty-btn" onclick="updateQuantity('3', 'decrement')"><i
+                                    class="fas fa-minus"></i></button>
+                            <span class="qty-display" id="qty-3">0</span>
+                            <button class="qty-btn" onclick="updateQuantity('3', 'increment')"><i
+                                    class="fas fa-plus"></i></button>
+                        </div>
 
-            <!-- زر الإضافة (يستدعي addToCart مع ID فقط) -->
-            <button class="add-to-cart-btn" data-price="1.200" onclick="addToCart('4')">أضف للسلة</button>
-        </div>
+                        <!-- زر الإضافة (يستدعي addToCart مع ID فقط) -->
+                        <button class="add-to-cart-btn" data-price="0.500" onclick="addToCart('3')">أضف للسلة</button>
+                    </div>
 
-        <!-- ... (بقية منتجات الفئة) ... -->
+                    <!-- Placeholder Product Card (ID: 4) - جبن شيدر طبيعي -->
+                    <div class="product-card" id="product-4">
+                        <div class="product-image-wrapper">
+                            <img src="images/جبنه شيدر.webp" alt="جبن شيدر">
+                        </div>
 
-    </div>
-</section>
+                        <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">جبن شيدر طبيعي</h4>
+                        <p style="font-size: 0.9em; color: #777;">عبوة 500 جرام</p>
+
+                        <div class="unit-selector">
+                            <select id="unit-4" onchange="updatePrice('4', 1.200, 10.000, 1.500)">
+                                <option value="piece">عبوة واحدة</option>
+                                <option value="carton">بالصندوق (10 عبوات)</option>
+                            </select>
+                        </div>
+
+                        <!-- قسم السعر الجديد مع الخصم -->
+                        <div class="price-section">
+                            <p class="original-price" data-original="1.500 ر.ع" style="display:block;">1.500 ر.ع</p>
+                            <p class="current-price" id="price-4">1.200 ر.ع</p>
+                        </div>
+
+                        <!-- **أزرار الكمية + و – (مضافة ومصححة)** -->
+                        <div class="quantity-control">
+                            <button class="qty-btn" onclick="updateQuantity('4', 'decrement')"><i
+                                    class="fas fa-minus"></i></button>
+                            <span class="qty-display" id="qty-4">0</span>
+                            <button class="qty-btn" onclick="updateQuantity('4', 'increment')"><i
+                                    class="fas fa-plus"></i></button>
+                        </div>
+
+                        <!-- زر الإضافة (يستدعي addToCart مع ID فقط) -->
+                        <button class="add-to-cart-btn" data-price="1.200" onclick="addToCart('4')">أضف للسلة</button>
+                    </div>
+
+                    <!-- ... (بقية منتجات الفئة) ... -->
+
+                </div>
+            </section>
         </div>
     </main>
 
@@ -213,7 +217,7 @@
         });
 
     </script>
-    
+
 </body>
 
 </html>

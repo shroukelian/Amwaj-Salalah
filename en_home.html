@@ -14,10 +14,10 @@
 </head>
 
 <body>
-    <!-- Toast Notification Structure -->
-    <!-- <div id="custom-toast" class="toast-container">
+    <!-- Toast Notification Structure (FIXED) -->
+    <div id="custom-toast" class="toast-container">
         <span id="toast-message"></span>
-    </div> -->
+    </div>
 
     <header>
         <!-- 1. Top Bar (Logo, Language, Cart) -->
@@ -37,7 +37,6 @@
                             <span class="secondary-tagline"
                                 style="font-size: 0.75em; color: var(--amwaj-secondary); margin-top: -3px; font-weight: 600;">24H Service / Fast Delivery</span>
                         </div>
-
                     </a>
                 </div>
 
@@ -86,10 +85,10 @@
                     Today's Deals and Discounts</h2>
                 <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
 
-                    <!-- Placeholder Product Card (ID: 1) -->
+                    <!-- Placeholder Product Card (ID: 1) - Mango Juice -->
                     <div class="product-card" id="product-1">
                         <div class="product-image-wrapper">
-                            <img src="images/مانجا.webp" alt="Mango Juice">
+                            <img src="images/مانجا.webp" alt="Fresh Mango Juice">
                         </div>
                         <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">Fresh Mango Juice</h4>
                         <p style="font-size: 0.9em; color: #777;">1 Liter Bottle</p>
@@ -119,7 +118,7 @@
                             to Cart</button>
                     </div>
 
-                    <!-- Placeholder Product Card (ID: 2) -->
+                    <!-- Placeholder Product Card (ID: 2 - Oasis Water) -->
                     <div class="product-card" id="product-2">
                         <div class="product-image-wrapper">
                             <img src="images/مياه.webp" alt="Oasis Water">
@@ -154,9 +153,11 @@
                     style="color: var(--amwaj-primary); border-bottom: 2px solid var(--amwaj-primary); padding-bottom: 10px; text-align: left;">
                     Bestselling Products</h2>
                 <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-                    <!-- Placeholder Product Card: Mango as Bestseller -->
+                    <!-- Placeholder Product Card: Mango as Bestseller (ID: best-1) -->
                     <div class="product-card" id="product-best-1">
-                        <img src="images/مانجا.webp" alt="Fresh Mango Juice">
+                        <div class="product-image-wrapper">
+                            <img src="images/مانجا.webp" alt="Fresh Mango Juice">
+                        </div>
                         <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">Fresh Mango Juice</h4>
                         <p style="font-size: 0.9em; color: #777;">1 Liter Bottle</p>
                         <div class="unit-selector">
@@ -165,10 +166,19 @@
                                 <option value="carton">Carton (6 Pieces)</option>
                             </select>
                         </div>
-                        <p class="price-display" id="price-best-1">1.350 OMR</p>
-                        <button class="add-to-cart-btn" data-price="1.350"
-                            onclick="addToCart('best-1')">Add to Cart</button>
+                         <div class="price-section">
+                            <p class="original-price" data-original="1.500 OMR" style="display:block;">1.500 OMR</p>
+                            <p class="current-price" id="price-best-1">1.350 OMR</p>
+                        </div>
+                        <!-- Quantity Control (manded) -->
+                        <div class="quantity-control">
+                            <button class="qty-btn" onclick="updateQuantity('best-1', 'decrement')"><i class="fas fa-minus"></i></button>
+                            <span class="qty-display" id="qty-best-1">0</span>
+                            <button class="qty-btn" onclick="updateQuantity('best-1', 'increment')"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn" id="add-btn-best-1" data-price="1.350" onclick="addToCart('best-1')">Add to Cart</button>
                     </div>
+                    <!-- ... (other products can be added here) ... -->
                 </div>
             </section>
 
@@ -212,9 +222,9 @@
     </div>
 
     <!-- Toast Notification Structure -->
-    <div id="custom-toast" class="toast-container">
+    <!-- <div id="custom-toast" class="toast-container">
         <span id="toast-message"></span>
-    </div>
+    </div> -->
 
     <footer>
         <div class="container">
