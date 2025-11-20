@@ -274,22 +274,28 @@ main {
     transform: translateY(-3px);
 }
 
-/* --- Footer & Contact Info --- */
-footer {
-    background-color: var(--amwaj-white);
-    padding: 30px 0;
-    border-top: 1px solid #EEE;
-}
-
 .footer-social-links a {
     margin: 0 5px;
     font-size: 1.5em;
+    display: inline-block;
 }
 
 .footer-social-links i {
-    padding: 5px;
-    border-radius: 50%;
+    padding: 8px 12px; 
+    border-radius: 50%; 
+    color: white; 
+    transition: transform 0.2s;
 }
+
+.footer-social-links i:hover {
+    transform: translateY(-2px);
+}
+
+.fab.fa-tiktok { background: black; }
+.fab.fa-snapchat-ghost { background: #FFFC00; color: black !important; } /* لون نص الأيقونة أسود هنا */
+.fab.fa-instagram { background: #E4405F; }
+.fab.fa-facebook-f { background: #1877F2; }
+.fab.fa-whatsapp { background: var(--amwaj-green); }
 
 /* --- Utility Buttons --- */
 .utility-buttons {
