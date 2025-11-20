@@ -1,10 +1,5 @@
-// main.js (FINAL UNIFIED VERSION)
+let cart = {};
 
-let cart = {}; // Global object for cart items
-
-// ---------------------------------------------------
-// 1. UTILITY FUNCTIONS (TOAST, SCROLL, PWA)
-// ---------------------------------------------------
 
 // Function to show the custom Toast Notification
 function showToast(message) {
@@ -46,9 +41,7 @@ function handleSearch(event) {
     }
 }
 
-// ---------------------------------------------------
 // 2. PRODUCT LOGIC (PRICE, QUANTITY, CART)
-// ---------------------------------------------------
 
 // Updates price display and stores it in the button's data-price
 function updatePrice(productId, piecePrice, cartonPrice, originalPriceValue = null) {
@@ -147,9 +140,6 @@ function updateCartDisplay() {
 }
 
 
-// ---------------------------------------------------
-// 3. INITIALIZERS
-// ---------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', () => {
     // Determine if we are on the product page to initialize prices
@@ -179,9 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updatePrice('best-1', 1.350, 2.500);
     }
 });
-// main.js - إضافة دالة liveSearch (جاهزة للـ AJAX)
 
-// main.js - دالة liveSearch (مفعلة بالمحاكاة)
 
 function liveSearch(query) {
     const resultsDiv = document.getElementById('live-search-results');
@@ -190,14 +178,13 @@ function liveSearch(query) {
     if (!resultsDiv) return;
 
     if (query.length >= minLength) {
-        // **هذه هي النتائج المحاكية (Dummy Data)**
+        // ** (Dummy Data)**
         const dummyProducts = [
             'عصير مانجو طازج',
             'مانجو مجمد 1كجم',
             'منتج آخر يحتوي على مان'
         ];
         
-        // عرض النتائج في div#live-search-results
         resultsDiv.innerHTML = dummyProducts.map(item => 
             `<div style="padding: 10px 15px; border-bottom: 1px solid #EEE; cursor: pointer; text-align: right;" 
                   onclick="selectSearchResult('${item.replace(/'/g, "\\'")}')">${item}</div>`
@@ -206,36 +193,29 @@ function liveSearch(query) {
         resultsDiv.style.display = 'block';
 
     } else {
-        // إخفاء النتائج إذا كان البحث أقل من 3 أحرف
         resultsDiv.style.display = 'none';
         resultsDiv.innerHTML = '';
     }
 }
 
-// دالة لمعالجة النقر على النتيجة
 function selectSearchResult(resultText) {
     const searchInput = document.getElementById('product-search');
-    searchInput.value = resultText.trim(); // يضع اسم المنتج في حقل البحث
+    searchInput.value = resultText.trim();
     document.getElementById('live-search-results').style.display = 'none';
 }
 
-// دالة لمعالجة النقر على النتيجة (اختياري)
 function selectSearchResult(resultText) {
     const searchInput = document.getElementById('product-search');
-    searchInput.value = resultText.split(':')[0].trim(); // يضع اسم المنتج في حقل البحث
+    searchInput.value = resultText.split(':')[0].trim();
     document.getElementById('live-search-results').style.display = 'none';
 }
-// main.js - داخل دالة DOMContentLoaded
 
 document.addEventListener('DOMContentLoaded', () => {
-    // ... (Your existing code) ...
     
     if (isProductPage) {
-        // ... (product page initialization) ...
     } else {
-        // Initialize prices for product 1, 2, and best-1 on index.html
          updatePrice('1', 1.350, 2.500, 1.500); 
         updatePrice('2', 0.150, 1.500, 0.200); 
-        updatePrice('best-1', 1.350, 2.500, 1.500); // <--- تأكد من وجود هذا السطر
+        updatePrice('best-1', 1.350, 2.500, 1.500);
     }
 });
