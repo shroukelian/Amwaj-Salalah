@@ -12,16 +12,15 @@
 
 <body>
     <header>
-        <!-- 1. الشريط العلوي (Logo, Language, Cart) -->
+        <!--  (Logo, Language, Cart) -->
         <div class="top-header-bar">
             <div class="container header-container">
-                <!-- Logo - بقالة أمواج صلالة -->
+                <!-- Logo  -->
                 <div class="logo header-logo">
                     <a href="index.html" style="display: flex; align-items: center; gap: 5px;">
                         <img src="images/logo-removebg-preview (3).png" alt="شعار بقالة أمواج صلالة"
                             style="height: 35px; width: auto;">
 
-                        <!-- إضافة الشعار والنص الثانوي في حاوية عمودية -->
                         <div class="logo-text-wrapper"
                             style="display: flex; flex-direction: column; align-items: flex-start;">
                             <span class="main-logo-title"
@@ -46,23 +45,21 @@
             </div>
         </div>
 
-        <!-- 2. شريط البحث التفاعلي (Search Bar) -->
+        <!--  (Search Bar) -->
         <form onsubmit="handleSearch(event)">
             <div class="search-bar-container">
                 <div class="container" style="position: relative;">
                     <input type="text" id="product-search" class="search-input"
                         placeholder="اكتب اسم المنتج أو الفئة للبحث التفاعلي..." oninput="liveSearch(this.value)">
 
-                    <!-- مكان ظهور نتائج البحث التفاعلي (مخفي افتراضياً) -->
                     <div id="live-search-results"
                         style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #DDD; border-top: none; max-height: 200px; overflow-y: auto; z-index: 1001; box-shadow: 0 5px 10px rgba(0,0,0,0.1);">
-                        <!-- النتائج ستظهر هنا -->
                     </div>
                 </div>
             </div>
         </form>
 
-        <!-- 3. شريط العروض المتحرك (Marquee/Scrolling Banner) -->
+        <!--  (Marquee/Scrolling Banner) -->
         <div class="scrolling-banner">
             <div class="container">
                 <span id="marquee-text">✨ عروض موسمية وتخفيضات خاصة بانتظارك! تسوق الآن ووفر المزيد. ✨</span>
@@ -83,7 +80,7 @@
                 <div class="product-grid" id="product-list-container"
                     style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
 
-                    <!-- Placeholder Product Card (ID: 3) - حليب المراعي طازج -->
+                    <!-- Placeholder Product Card (ID: 3)  -->
                     <div class="product-card" id="product-3">
                         <div class="product-image-wrapper">
                             <img src="images/حليب.webp" alt="حليب طازج">
@@ -99,13 +96,11 @@
                             </select>
                         </div>
 
-                        <!-- قسم السعر الجديد مع الخصم -->
                         <div class="price-section">
                             <p class="original-price" data-original="0.600 ر.ع" style="display:block;">0.600 ر.ع</p>
                             <p class="current-price" id="price-3">0.500 ر.ع</p>
                         </div>
 
-                        <!-- **أزرار الكمية + و – (مضافة ومصححة)** -->
                         <div class="quantity-control">
                             <button class="qty-btn" onclick="updateQuantity('3', 'decrement')"><i
                                     class="fas fa-minus"></i></button>
@@ -114,11 +109,10 @@
                                     class="fas fa-plus"></i></button>
                         </div>
 
-                        <!-- زر الإضافة (يستدعي addToCart مع ID فقط) -->
                         <button class="add-to-cart-btn" data-price="0.500" onclick="addToCart('3')">أضف للسلة</button>
                     </div>
 
-                    <!-- Placeholder Product Card (ID: 4) - جبن شيدر طبيعي -->
+                    <!-- Placeholder Product Card (ID: 4)  -->
                     <div class="product-card" id="product-4">
                         <div class="product-image-wrapper">
                             <img src="images/جبنه شيدر.webp" alt="جبن شيدر">
@@ -134,13 +128,11 @@
                             </select>
                         </div>
 
-                        <!-- قسم السعر الجديد مع الخصم -->
                         <div class="price-section">
                             <p class="original-price" data-original="1.500 ر.ع" style="display:block;">1.500 ر.ع</p>
                             <p class="current-price" id="price-4">1.200 ر.ع</p>
                         </div>
 
-                        <!-- **أزرار الكمية + و – (مضافة ومصححة)** -->
                         <div class="quantity-control">
                             <button class="qty-btn" onclick="updateQuantity('4', 'decrement')"><i
                                     class="fas fa-minus"></i></button>
@@ -149,11 +141,9 @@
                                     class="fas fa-plus"></i></button>
                         </div>
 
-                        <!-- زر الإضافة (يستدعي addToCart مع ID فقط) -->
                         <button class="add-to-cart-btn" data-price="1.200" onclick="addToCart('4')">أضف للسلة</button>
                     </div>
 
-                    <!-- ... (بقية منتجات الفئة) ... -->
 
                 </div>
             </section>
@@ -196,7 +186,6 @@
 
     <script src="main.js?v=2.1"></script>
     <script>
-        // دالة بسيطة لتحديد اسم الفئة وعرضه (ستقوم الباك إند بتنفيذها بشكل صحيح)
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const categorySlug = urlParams.get('category');
@@ -204,14 +193,12 @@
             let categoryName = "جميع المنتجات";
             if (categorySlug === 'dairy') categoryName = "الألبان والأجبان";
             if (categorySlug === 'meat') categoryName = "اللحوم والدواجن";
-            // **أضف الفئات المفقودة هنا:**
             if (categorySlug === 'drinks') categoryName = "العصائر والمشروبات"; // <-- تم الإضافة
             if (categorySlug === 'snacks') categoryName = "الوجبات الخفيفة";    // <-- تم الإضافة
 
             document.getElementById('category-name-display').textContent = categoryName;
             document.getElementById('product-count-display').textContent = "24";
 
-            // تهيئة أسعار المنتجات في هذه الصفحة
             updatePrice('3', 0.500, 5.500);
             updatePrice('4', 1.200, 10.000);
         });

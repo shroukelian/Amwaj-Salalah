@@ -44,9 +44,7 @@
                 <div class="container" style="position: relative;">
                     <input type="text" id="product-search" class="search-input" placeholder="Enter Product Name or Category for Interactive Search..." oninput="liveSearch(this.value)">
                     
-                    <!-- Place for Live Search Results -->
                     <div id="live-search-results" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #DDD; border-top: none; max-height: 200px; overflow-y: auto; z-index: 1001; box-shadow: 0 5px 10px rgba(0,0,0,0.1);">
-                        <!-- Results will appear here -->
                     </div>
                 </div>
             </div>
@@ -59,7 +57,6 @@
             
             <section id="full-categories-section" class="page-section" style="padding: 30px 0;">
                 <div class="category-grid" style="grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));">
-                    <!-- Example 4 Categories - Repeat for 34 Categories -->
                     <div class="category-card" onclick="goToCategory('dairy')">
                         <img src="images/البان.webp" alt="Dairy & Cheese">
                         <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">Dairy & Cheese</h4>
@@ -80,7 +77,6 @@
                         <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">Snacks</h4>
                         <p style="font-size: 0.8em; color: #777;">(15 Products)</p>
                     </div>
-                    <!-- (Repeat category-card) -->
                 </div>
             </section>
         </div>
@@ -117,7 +113,6 @@
     <script src="main.js?v=2.1"></script>
     <script>
         function goToCategory(categorySlug) {
-            // Navigate to the products page for the selected category
             window.location.href = `en_products.html?category=${categorySlug}`;
         }
     </script>

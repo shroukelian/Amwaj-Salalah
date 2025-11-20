@@ -181,35 +181,42 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 // main.js - إضافة دالة liveSearch (جاهزة للـ AJAX)
 
+// main.js - دالة liveSearch (مفعلة بالمحاكاة)
+
 function liveSearch(query) {
     const resultsDiv = document.getElementById('live-search-results');
-    const minLength = 3; // الحد الأدنى لعدد الأحرف
+    const minLength = 3; 
+
+    if (!resultsDiv) return;
 
     if (query.length >= minLength) {
-        // **********************************************
-        // * هذا هو المكان الذي سيقوم فيه مطور الباك-إند *
-        // * بوضع كود AJAX لجلب المنتجات المشابهة من قاعدة البيانات *
-        // **********************************************
-        
-        // محاكاة لنتائج البحث (يجب استبدالها بـ AJAX/Fetch API)
-        const dummyResults = [
-            `منتج مشابه: ${query} (1.500 ر.ع)`,
-            `فئة: ${query} للمشروبات`,
-            `زيتون بـ ${query}`
+        // **هذه هي النتائج المحاكية (Dummy Data)**
+        const dummyProducts = [
+            'عصير مانجو طازج',
+            'مانجو مجمد 1كجم',
+            'منتج آخر يحتوي على مان'
         ];
-
-        // عرض النتائج
-        resultsDiv.innerHTML = dummyResults.map(item => 
-            `<div style="padding: 10px 15px; border-bottom: 1px solid #EEE; cursor: pointer;" 
+        
+        // عرض النتائج في div#live-search-results
+        resultsDiv.innerHTML = dummyProducts.map(item => 
+            `<div style="padding: 10px 15px; border-bottom: 1px solid #EEE; cursor: pointer; text-align: right;" 
                   onclick="selectSearchResult('${item.replace(/'/g, "\\'")}')">${item}</div>`
         ).join('');
         
         resultsDiv.style.display = 'block';
 
     } else {
+        // إخفاء النتائج إذا كان البحث أقل من 3 أحرف
         resultsDiv.style.display = 'none';
         resultsDiv.innerHTML = '';
     }
+}
+
+// دالة لمعالجة النقر على النتيجة
+function selectSearchResult(resultText) {
+    const searchInput = document.getElementById('product-search');
+    searchInput.value = resultText.trim(); // يضع اسم المنتج في حقل البحث
+    document.getElementById('live-search-results').style.display = 'none';
 }
 
 // دالة لمعالجة النقر على النتيجة (اختياري)
@@ -227,8 +234,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // ... (product page initialization) ...
     } else {
         // Initialize prices for product 1, 2, and best-1 on index.html
-        updatePrice('1', 1.350, 2.500, 1.500); 
-        updatePrice('2', 0.150, 1.500); 
-        updatePrice('best-1', 1.350, 2.500); // <--- تأكد من وجود هذا السطر
+         updatePrice('1', 1.350, 2.500, 1.500); 
+        updatePrice('2', 0.150, 1.500, 0.200); 
+        updatePrice('best-1', 1.350, 2.500, 1.500); // <--- تأكد من وجود هذا السطر
     }
 });

@@ -20,7 +20,6 @@
         <!-- 1. Top Bar (Logo, Language, Cart) -->
         <div class="top-header-bar">
             <div class="container header-container">
-                <!-- Logo - Amwaj Salalah Grocery (with Tagline) -->
                 <div class="logo header-logo">
                     <a href="en_home.html" style="display: flex; align-items: center; gap: 5px;">
                         <img src="images/logo-removebg-preview (3).png" alt="Amwaj Salalah Grocery Logo"
@@ -59,7 +58,6 @@
                     <!-- Place for Live Search Results -->
                     <div id="live-search-results"
                         style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #DDD; border-top: none; max-height: 200px; overflow-y: auto; z-index: 1001; box-shadow: 0 5px 10px rgba(0,0,0,0.1);">
-                        <!-- Results will appear here -->
                     </div>
                 </div>
             </div>
@@ -200,9 +198,8 @@
             document.getElementById('category-name-display').textContent = categoryName;
             document.getElementById('product-count-display').textContent = "24";
 
-            // Initialize prices for the demo products
-            updatePrice('3', 0.500, 5.500, 0.600); // Milk (Discounted from 0.600)
-            updatePrice('4', 1.200, 10.000, 1.500); // Cheese (Discounted from 1.500)
+            updatePrice('3', 0.500, 5.500, 0.600); 
+            updatePrice('4', 1.200, 10.000, 1.500); 
         });
 
     </script>

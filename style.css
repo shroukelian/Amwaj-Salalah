@@ -469,10 +469,10 @@ html[dir="ltr"] #custom-toast.show {
     margin-top: 10px;
 }
 .original-price {
-    color: #999;
+    color: #4CAF50;
     text-decoration: line-through; /* خط مشطوب */
     font-size: 0.9em;
-    font-weight: 400;
+    font-weight: 500;
     margin-bottom: 3px;
 }
 .current-price {

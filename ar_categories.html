@@ -11,7 +11,7 @@
 <body>
 
     <header>
-        <!-- 1. الشريط العلوي (Logo, Language, Cart) -->
+        <!--  (Logo, Language, Cart) -->
         <div class="top-header-bar">
             <div class="container header-container">
                 <div class="logo header-logo">
@@ -19,7 +19,6 @@
                         <img src="images/logo-removebg-preview (3).png" alt="شعار بقالة أمواج صلالة"
                             style="height: 35px; width: auto;">
 
-                        <!-- إضافة الشعار والنص الثانوي في حاوية عمودية -->
                         <div class="logo-text-wrapper"
                             style="display: flex; flex-direction: column; align-items: flex-start;">
                             <span class="main-logo-title"
@@ -41,15 +40,12 @@
                 </div>
             </div>
         </div>
-        <!-- 2. شريط البحث التفاعلي -->
         <form onsubmit="handleSearch(event)">
     <div class="search-bar-container">
         <div class="container" style="position: relative;">
             <input type="text" id="product-search" class="search-input" placeholder="اكتب اسم المنتج أو الفئة للبحث التفاعلي..." oninput="liveSearch(this.value)">
             
-            <!-- مكان ظهور نتائج البحث التفاعلي (مخفي افتراضياً) -->
             <div id="live-search-results" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #DDD; border-top: none; max-height: 200px; overflow-y: auto; z-index: 1001; box-shadow: 0 5px 10px rgba(0,0,0,0.1);">
-                <!-- النتائج ستظهر هنا -->
             </div>
         </div>
     </div>
@@ -62,7 +58,6 @@
             
             <section id="full-categories-section" class="page-section" style="padding: 30px 0;">
                 <div class="category-grid" style="grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));">
-                    <!-- مثال على 8 فئات - قم بتكرارها لـ 34 فئة مع تغيير الـ slug -->
                     <div class="category-card" onclick="goToCategory('dairy')">
                         <img src="images/البان.webp" alt="ألبان وأجبان">
                         <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">ألبان وأجبان</h4>
@@ -83,7 +78,6 @@
                         <h4 style="color: var(--amwaj-text-dark); margin: 5px 0;">وجبات خفيفة</h4>
                         <p style="font-size: 0.8em; color: #777;">(15 منتج)</p>
                     </div>
-                    <!-- (كرر الـ category-card) -->
                 </div>
             </section>
         </div>
@@ -120,7 +114,6 @@
     <script src="main.js?v=2.1"></script>
     <script>
         function goToCategory(categorySlug) {
-            // توجيه لصفحة المنتجات الخاصة بالفئة
             window.location.href = `products.html?category=${categorySlug}`;
         }
     </script>
